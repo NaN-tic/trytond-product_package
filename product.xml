@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- product.template -->
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+
+        <!-- product.package -->
+        <record model="ir.ui.view" id="product_package_view_form">
+            <field name="model">product.package</field>
+            <field name="type">form</field>
+            <field name="name">product_package_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_package_view_list">
+            <field name="model">product.package</field>
+            <field name="type">tree</field>
+            <field name="name">product_package_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_package">
+            <field name="name">Product Packages</field>
+            <field name="res_model">product.package</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_package_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_package_view_list"/>
+            <field name="act_window" ref="act_product_package"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_package_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_package_view_form"/>
+            <field name="act_window" ref="act_product_package"/>
+        </record>
+
+        <record model="ir.model.access" id="access_product_package">
+            <field name="model" search="[('model', '=', 'product.package')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_package_admin">
+            <field name="model" search="[('model', '=', 'product.package')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

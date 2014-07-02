@@ -1,0 +1,63 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.package,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:product.package,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:product.package,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:product.package,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.package,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.package,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:product.package,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.package,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimals unitaris"
+
+msgctxt "field:product.package,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.package,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.product,packages:"
+msgid "Packages"
+msgstr "Empaquetaments"
+
+msgctxt "model:ir.action,name:act_product_package"
+msgid "Product Packages"
+msgstr "Empaquetament de producte"
+
+msgctxt "model:product.package,name:"
+msgid "Product Package"
+msgstr "Empaquetament de producte"
+
+msgctxt "view:product.package:"
+msgid "Package"
+msgstr "Empaquetament"
+
+msgctxt "view:product.package:"
+msgid "Packages"
+msgstr "Empaquetaments"
