@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.package:"
+msgid "Quantity per package must be greater than zero."
+msgstr "La quantitat per paquet ha de ser més gran que zero."
+
 msgctxt "field:product.package,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"
@@ -42,7 +46,7 @@ msgctxt "field:product.package,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:product.product,packages:"
+msgctxt "field:product.template,packages:"
 msgid "Packages"
 msgstr "Empaquetaments"
 
@@ -59,5 +63,9 @@ msgid "Package"
 msgstr "Empaquetament"
 
 msgctxt "view:product.package:"
+msgid "Packages"
+msgstr "Empaquetaments"
+
+msgctxt "view:product.template:"
 msgid "Packages"
 msgstr "Empaquetaments"

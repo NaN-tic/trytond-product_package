@@ -1,14 +1,14 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 from trytond.modules.product.product import STATES, DEPENDS
 
 __all__ = ['Package', 'Template']
 __metaclass__ = PoolMeta
-
 
 
 class Package(ModelSQL, ModelView):
@@ -38,9 +38,25 @@ class Package(ModelSQL, ModelView):
             return self.product.default_uom.digits
         return 2
 
+    @staticmethod
+    def default_quantity():
+        return 1
+
+    @staticmethod
+    def default_unit_digits():
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        uom_id = Transaction().context.get('default_uom')
+        if uom_id:
+            uom = Uom(uom_id)
+            return uom.digits
+        return 1
+
 
 class Template:
     __name__ = 'product.template'
 
     packages = fields.One2Many('product.package', 'product', 'Packages',
-        states=STATES, depends=DEPENDS)
+        states=STATES, depends=DEPENDS + ['default_uom'], context={
+            'default_uom': Eval('default_uom', 0),
+            },)
