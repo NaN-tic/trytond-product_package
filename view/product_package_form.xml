@@ -8,4 +8,6 @@
     <field name="name"/>
     <label name="quantity"/>
     <field name="quantity"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
 </form>

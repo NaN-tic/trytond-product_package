@@ -17,6 +17,7 @@ class Package(ModelSQL, ModelView):
 
     product = fields.Many2One('product.template', 'Product', required=True,
         ondelete='CASCADE')
+    sequence = fields.Integer('Sequence')
     name = fields.Char('Name', required=True)
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
@@ -27,10 +28,16 @@ class Package(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Package, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
         cls._sql_constraints += [
             ('quantity_greater_than_zero', 'CHECK(quantity > 0)',
                 'Quantity per package must be greater than zero.'),
             ]
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @fields.depends('product')
     def on_change_with_unit_digits(self, name=None):
