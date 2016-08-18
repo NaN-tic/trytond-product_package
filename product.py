@@ -1,6 +1,6 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, Check, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -27,8 +27,9 @@ class Package(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Package, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('quantity_greater_than_zero', 'CHECK(quantity > 0)',
+            ('quantity_greater_than_zero', Check(t, t.quantity > 0),
                 'Quantity per package must be greater than zero.'),
             ]
 
