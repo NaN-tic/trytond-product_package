@@ -8,7 +8,6 @@ from trytond.transaction import Transaction
 from trytond.modules.product.product import STATES, DEPENDS
 
 __all__ = ['Package', 'Template']
-__metaclass__ = PoolMeta
 
 
 class Package(ModelSQL, ModelView):
@@ -55,6 +54,7 @@ class Package(ModelSQL, ModelView):
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
 
     packages = fields.One2Many('product.package', 'product', 'Packages',
