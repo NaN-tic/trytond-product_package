@@ -53,8 +53,7 @@ class Package(ModelSQL, ModelView):
         return 1
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     packages = fields.One2Many('product.package', 'product', 'Packages',
