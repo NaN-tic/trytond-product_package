@@ -14,6 +14,10 @@ msgctxt "field:product.package,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:product.package,is_default:"
+msgid "Default"
+msgstr "Por defecto"
+
 msgctxt "field:product.package,name:"
 msgid "Name"
 msgstr "Nombre"
@@ -49,6 +53,14 @@ msgstr "Empaquetados"
 msgctxt "model:ir.action,name:act_product_package"
 msgid "Product Packages"
 msgstr "Empaquetados producto"
+
+msgctxt "model:ir.message,text:msg_is_default_unique"
+msgid "Is default must be unique by product."
+msgstr "Por defecto debe ser único por producto."
+
+msgctxt "model:ir.message,text:msg_quantity_greater_than_zero"
+msgid "Quantity per package must be greater than zero."
+msgstr "La cantidad por paquete debe ser más grande que zero."
 
 msgctxt "model:product.package,name:"
 msgid "Product Package"
