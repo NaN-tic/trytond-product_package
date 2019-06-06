@@ -5,4 +5,5 @@
     <field name="product"/>
     <field name="name"/>
     <field name="quantity"/>
+    <field name="is_default"/>
 </tree>
