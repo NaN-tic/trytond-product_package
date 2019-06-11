@@ -87,3 +87,13 @@ class Template(metaclass=PoolMeta):
         states=STATES, depends=DEPENDS + ['default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
+    default_package = fields.Function(fields.Many2One(
+        'product.package', 'Default Package'), 'get_default_package')
+
+    def get_default_package(self, name=None):
+        if self.packages:
+            for package in self.packages:
+                if package.is_default:
+                    return package
+            else:
+                return self.packages[0]
