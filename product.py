@@ -2,12 +2,11 @@
 # copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, Check, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 
-from trytond.modules.product.product import STATES, DEPENDS
 
 __all__ = ['Package', 'Template']
 
@@ -55,7 +54,7 @@ class Package(ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_with_unit_digits(self, name=None):
-        if self.product:
+        if self.product and self.product.default_uom:
             return self.product.default_uom.digits
         return 2
 
@@ -84,7 +83,9 @@ class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     packages = fields.One2Many('product.package', 'product', 'Packages',
-        states=STATES, depends=DEPENDS + ['default_uom'], context={
+        states={
+            'readonly': ~Eval('active', True) | ~Bool(Eval('default_uom')),
+            }, depends=['active', 'default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
     default_package = fields.Function(fields.Many2One(
