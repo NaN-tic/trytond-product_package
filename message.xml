@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_is_default_unique">
             <field name="text">Is default must be unique by product.</field>
         </record>
+        <record model="ir.message" id="msg_product_package_qty">
+            <field name="text">You cannot change the quantity of a package which is already associated.</field>
+        </record>
     </data>
 </tryton>

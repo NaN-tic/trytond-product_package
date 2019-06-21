@@ -58,6 +58,10 @@ msgctxt "model:ir.message,text:msg_is_default_unique"
 msgid "Is default must be unique by product."
 msgstr "Per defecte ha de ser únic per producte."
 
+msgctxt "model:ir.message,text:msg_product_package_qty"
+msgid "You cannot change the quantity of a package which is already associated."
+msgstr "No podeu canviar la quantitat que està ja en ús."
+
 msgctxt "model:ir.message,text:msg_quantity_greater_than_zero"
 msgid "Quantity per package must be greater than zero."
 msgstr "La quantitat per paquet ha de ser més gran que zero."
