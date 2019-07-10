@@ -37,7 +37,7 @@ def check_new_package(func):
             for model, msg in Package._create_package:
                 if find_packages(cls, model, products):
                     raise AccessError(gettext(msg))
-        func(cls, vlist)
+        return func(cls, vlist)
     return decorator
 
 def check_no_package(func):
