@@ -105,7 +105,7 @@ class Package(ModelSQL, ModelView):
     def default_is_default():
         return True
 
-    @fields.depends('product')
+    @fields.depends('_parent_product.default_uom', 'product')
     def on_change_with_unit_digits(self, name=None):
         if self.product and self.product.default_uom:
             return self.product.default_uom.digits
