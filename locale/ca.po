@@ -32,7 +32,11 @@ msgstr "Quantitat"
 
 msgctxt "field:product.package,rec_name:"
 msgid "Record Name"
-msgstr "Nom"
+msgstr "Nom del registre"
+
+msgctxt "field:product.package,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
 
 msgctxt "field:product.package,unit_digits:"
 msgid "Unit Digits"
