@@ -1,7 +1,7 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 import functools
-from trytond.model import ModelView, ModelSQL, Check, fields
+from trytond.model import ModelView, ModelSQL, Check, fields, sequence_ordered
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -60,7 +60,7 @@ def check_no_package(func):
     return decorator
 
 
-class Package(ModelSQL, ModelView):
+class Package(sequence_ordered(), ModelSQL, ModelView):
     'Product Package'
     __name__ = 'product.package'
 
