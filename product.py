@@ -67,11 +67,10 @@ class Package(sequence_ordered(), ModelSQL, ModelView):
     product = fields.Many2One('product.template', 'Product', required=True,
         ondelete='CASCADE')
     name = fields.Char('Name', required=True)
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
+    unit = fields.Function(fields.Many2One('product.uom', "Unit"),
+        'on_change_with_unit')
     quantity = fields.Float('Quantity', required=True,
-        domain=[('quantity', '>', 0)], digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+        domain=[('quantity', '>', 0)], digits='unit')
     is_default = fields.Boolean('Default')
 
     @classmethod
@@ -88,16 +87,6 @@ class Package(sequence_ordered(), ModelSQL, ModelView):
         cls._create_package = []
 
     @staticmethod
-    def default_unit_digits():
-        pool = Pool()
-        Uom = pool.get('product.uom')
-        uom_id = Transaction().context.get('default_uom')
-        if uom_id:
-            uom = Uom(uom_id)
-            return uom.digits
-        return 1
-
-    @staticmethod
     def default_quantity():
         return 1
 
@@ -105,11 +94,10 @@ class Package(sequence_ordered(), ModelSQL, ModelView):
     def default_is_default():
         return True
 
-    @fields.depends('_parent_product.default_uom', 'product')
-    def on_change_with_unit_digits(self, name=None):
+    @fields.depends('product', '_parent_product.default_uom', )
+    def on_change_with_unit(self, name=None):
         if self.product and self.product.default_uom:
-            return self.product.default_uom.digits
-        return 2
+            return self.product.default_uom.id
 
     @classmethod
     def validate(cls, packages):
