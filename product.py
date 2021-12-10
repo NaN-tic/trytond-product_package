@@ -19,7 +19,7 @@ def check_new_package(func):
         Model = Pool().get(model)
         for sub_records in grouped_slice(products):
             rows = Model.search([
-                    ('product', 'in', list(map(int, sub_records))),
+                    ('product.template', 'in', list(map(int, sub_records))),
                     ('product_package', '=', None),
                     ],
                 limit=1, order=[])
