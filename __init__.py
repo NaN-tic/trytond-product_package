@@ -8,4 +8,5 @@ def register():
     Pool.register(
         product.Package,
         product.Template,
+        product.Product,
         module='product_package', type_='model')
