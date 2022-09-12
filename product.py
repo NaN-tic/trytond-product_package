@@ -33,10 +33,11 @@ def check_new_package(func):
 
         transaction = Transaction()
         if (transaction.user != 0 and transaction.context.get('_check_access')):
-            products = list(set([r.get('product') for r in vlist]))
-            for model, msg in Package._create_package:
-                if find_packages(cls, model, products):
-                    raise AccessError(gettext(msg))
+            with Transaction().set_context(_check_access=False):
+                products = list(set([r.get('product') for r in vlist]))
+                for model, msg in Package._create_package:
+                    if find_packages(cls, model, products):
+                        raise AccessError(gettext(msg))
         return func(cls, vlist)
     return decorator
 
