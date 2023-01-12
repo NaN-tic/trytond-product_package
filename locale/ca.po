@@ -85,3 +85,7 @@ msgstr "Empaquetaments"
 msgctxt "view:product.template:"
 msgid "Packages"
 msgstr "Empaquetaments"
+
+msgctxt "field:product.product,packages:"
+msgid "Packages"
+msgstr "Empaquetados"

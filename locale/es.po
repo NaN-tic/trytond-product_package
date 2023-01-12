@@ -54,6 +54,10 @@ msgctxt "field:product.template,packages:"
 msgid "Packages"
 msgstr "Empaquetados"
 
+msgctxt "field:product.product,packages:"
+msgid "Packages"
+msgstr "Empaquetados"
+
 msgctxt "model:ir.action,name:act_product_package"
 msgid "Product Packages"
 msgstr "Empaquetados producto"
