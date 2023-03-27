@@ -154,3 +154,15 @@ class Template(metaclass=PoolMeta):
                     return package
             else:
                 return self.packages[0]
+
+
+class Product(metaclass=PoolMeta):
+    __name__ = 'product.product'
+
+    @classmethod
+    def __setup__(cls):
+        if not hasattr(cls, '_no_template_field'):
+            cls._no_template_field = set()
+        cls._no_template_field.update(['packages', 'default_package'])
+
+        super(Product, cls).__setup__()
