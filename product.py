@@ -126,13 +126,22 @@ class Package(sequence_ordered(), ModelSQL, ModelView):
         is_unique = True
         for package in packages:
             if package.is_default:
-                for pack in package.product.packages:
-                    if pack.is_default:
-                        product_id = pack.product.id
-                        if product_id in products:
-                            is_unique = False
-                            break
-                        products.append(product_id)
+                if package.template:
+                    for pack in package.template.packages:
+                        if pack.is_default:
+                            product_id = pack.template.id
+                            if product_id in products:
+                                is_unique = False
+                                break
+                            products.append(product_id)
+                if package.product:
+                    for pack in package.product.packages:
+                        if pack.is_default:
+                            product_id = pack.product.id
+                            if product_id in products:
+                                is_unique = False
+                                break
+                            products.append(product_id)
 
         if not is_unique:
             raise UserError(gettext(
@@ -162,8 +171,20 @@ class Template(metaclass=PoolMeta):
             }, depends=['active', 'default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
+    product_packages = fields.Function(fields.One2Many('product.package', None,
+            "Product Packages"), 'get_product_packages')
     default_package = fields.Function(fields.Many2One(
         'product.package', 'Default Package'), 'get_default_package')
+
+    def get_product_packages(self, name=None):
+        pool = Pool()
+        Package = pool.get('product.package')
+
+        product_packages = Package.search([
+            ('product.template', '=', self.id),
+            ('product.active', '=', self.active),
+        ])
+        return [x.id for x in product_packages]
 
     def get_default_package(self, name=None):
         if self.packages:
@@ -216,8 +237,26 @@ class Product(metaclass=PoolMeta):
             }, depends=['active', 'default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
+    template_packages = fields.Function(fields.One2Many('product.package', None,
+            "Template Packages"), 'get_template_packages')
     default_package = fields.Function(fields.Many2One(
         'product.package', 'Default Package'), 'get_default_package')
+
+    '''
+    @classmethod
+    def __setup__(cls):
+        if not hasattr(cls, '_no_template_field'):
+            cls._no_template_field = set()
+        cls._no_template_field.update(['product_packages'])
+        super(Product, cls).__setup__()
+    '''
+
+    def get_template_packages(self, name=None):
+        pool = Pool()
+        Package = pool.get('product.package')
+
+        template_packages = Package.search([('template', '=', self.template),])
+        return [x.id for x in template_packages]
 
     def get_default_package(self, name=None):
         if self.packages:
