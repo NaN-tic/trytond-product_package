@@ -2,10 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-  <xpath expr="/form/notebook/page[@id='general']" position="after">
-    <page string="Packages" id="packages">
-      <field name="packages" colspan="4"/>
+  <xpath expr="/form/notebook/page[@id='packages']/field[@name='product_packages']" position="replace">
       <field name="template_packages" colspan="4"/>
-    </page>
   </xpath>
 </data>
