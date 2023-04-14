@@ -10,13 +10,6 @@
             <field name="name">template_form</field>
         </record>
 
-        <!-- product.product-->
-        <record model="ir.ui.view" id="product_view_form">
-            <field name="model">product.product</field>
-            <field name="inherit" ref="product.product_view_form"/>
-            <field name="name">product_form</field>
-        </record>
-
         <!-- product.package -->
         <record model="ir.ui.view" id="product_package_view_form">
             <field name="model">product.package</field>

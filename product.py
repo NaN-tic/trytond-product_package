@@ -36,7 +36,6 @@ def check_new_package(func):
         transaction = Transaction()
         if (transaction.user != 0 and transaction.context.get('_check_access')):
             with Transaction().set_context(_check_access=False):
-                print('AQUI')
                 templates = list(set([r.get('template') for r in vlist
                     if r.get('template')]))
                 products = list(set([r.get('product') for r in vlist
@@ -171,35 +170,8 @@ class Template(metaclass=PoolMeta):
             }, depends=['active', 'default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
-    product_packages = fields.Function(fields.One2Many('product.package', None,
-            "Product Packages"), 'get_product_packages',
-            setter='set_product_packages')
     default_package = fields.Function(fields.Many2One(
         'product.package', 'Default Package'), 'get_default_package')
-
-    def get_product_packages(self, name=None):
-        pool = Pool()
-        Package = pool.get('product.package')
-
-        product_packages = Package.search([
-            ('product.template', '=', self.id),
-            ('product.active', '=', self.active),
-        ])
-        return [x.id for x in product_packages]
-
-    @classmethod
-    def set_product_packages(cls, templates, name, values):
-        #Temporal fix
-        pool = Pool()
-        Package = pool.get('product.package')
-
-        if not values:
-            return
-
-        for value in values:
-            if value[0] == 'write':
-                pacakges = Package.search([('id', 'in', value[1])])
-                Package.write(pacakges, value[2])
 
     def get_default_package(self, name=None):
         if self.packages:
@@ -252,39 +224,8 @@ class Product(metaclass=PoolMeta):
             }, depends=['active', 'default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
-    template_packages = fields.Function(fields.One2Many('product.package', None,
-            "Template Packages", readonly=True), 'get_template_packages',
-            setter='set_template_packages')
     default_package = fields.Function(fields.Many2One(
         'product.package', 'Default Package'), 'get_default_package')
-
-    @classmethod
-    def __setup__(cls):
-        if not hasattr(cls, '_no_template_field'):
-            cls._no_template_field = set()
-        cls._no_template_field.update(['product_packages'])
-        super(Product, cls).__setup__()
-
-    def get_template_packages(self, name=None):
-        pool = Pool()
-        Package = pool.get('product.package')
-
-        template_packages = Package.search([('template', '=', self.template),])
-        return [x.id for x in template_packages]
-
-    @classmethod
-    def set_template_packages(cls, products, name, values):
-        #Temporal fix
-        pool = Pool()
-        Package = pool.get('product.package')
-
-        if not values:
-            return
-
-        for value in values:
-            if value[0] == 'write':
-                pacakges = Package.search([('id', 'in', value[1])])
-                Package.write(pacakges, value[2])
 
     def get_default_package(self, name=None):
         if self.packages:
@@ -324,7 +265,7 @@ class Product(metaclass=PoolMeta):
         return new_products
 
     def package_used(self, **pattern):
-        # Skip rultes to test patern on all records
+        # Skip rules to test patern on all records
         with Transaction().set_user(0):
             product = self.__class__(self)
         for package in product.packages:

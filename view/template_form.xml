@@ -5,7 +5,6 @@ this repository contains the full copyright notices and license terms. -->
   <xpath expr="/form/notebook/page[@id='general']" position="after">
     <page string="Packages" id="packages">
       <field name="packages" colspan="4"/>
-      <field name="product_packages" colspan="4"/>
     </page>
   </xpath>
 </data>
