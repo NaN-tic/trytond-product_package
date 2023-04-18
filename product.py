@@ -121,18 +121,18 @@ class Package(sequence_ordered(), ModelSQL, ModelView):
     def validate(cls, packages):
         super(Package, cls).validate(packages)
 
-        products = []
+        products, templates = [], []
         is_unique = True
         for package in packages:
             if package.is_default:
                 if package.template:
                     for pack in package.template.packages:
                         if pack.is_default:
-                            product_id = pack.template.id
-                            if product_id in products:
+                            template_id = pack.template.id
+                            if template_id in templates:
                                 is_unique = False
                                 break
-                            products.append(product_id)
+                            templates.append(template_id)
                 if package.product:
                     for pack in package.product.packages:
                         if pack.is_default:
@@ -244,11 +244,11 @@ class Product(metaclass=PoolMeta):
         else:
             default = default.copy()
 
-        copy_suppliers = 'packages' not in default
+        copy_packages = 'packages' not in default
         if 'template' in default:
             default.setdefault('packages', None)
         new_products = super().copy(products, default)
-        if 'template' in default and copy_suppliers:
+        if 'template' in default and copy_packages:
             template2new = {}
             product2new = {}
             to_copy = []
