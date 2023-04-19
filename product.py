@@ -245,10 +245,10 @@ class Product(metaclass=PoolMeta):
             default = default.copy()
 
         copy_packages = 'packages' not in default
-        if 'template' in default:
+        if 'product' in default:
             default.setdefault('packages', None)
         new_products = super().copy(products, default)
-        if 'template' in default and copy_packages:
+        if 'product' in default and copy_packages:
             template2new = {}
             product2new = {}
             to_copy = []

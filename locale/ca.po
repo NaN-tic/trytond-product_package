@@ -38,6 +38,14 @@ msgctxt "field:product.package,sequence:"
 msgid "Sequence"
 msgstr "Secuencia"
 
+msgctxt "field:product.package,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.package,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
 msgctxt "field:product.package,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimals unitaris"
@@ -49,6 +57,14 @@ msgstr "Data de modificació"
 msgctxt "field:product.package,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "field:product.product,packages:"
+msgid "Packages"
+msgstr "Empaquetados"
+
+msgctxt "field:product.template,default_package:"
+msgid "Default Package"
+msgstr "Paquet per defecte"
 
 msgctxt "field:product.template,packages:"
 msgid "Packages"
@@ -63,7 +79,8 @@ msgid "Is default must be unique by product."
 msgstr "Per defecte ha de ser únic per producte."
 
 msgctxt "model:ir.message,text:msg_product_package_qty"
-msgid "You cannot change the quantity of a package which is already associated."
+msgid ""
+"You cannot change the quantity of a package which is already associated."
 msgstr "No podeu canviar la quantitat que està ja en ús."
 
 msgctxt "model:ir.message,text:msg_quantity_greater_than_zero"
@@ -85,7 +102,3 @@ msgstr "Empaquetaments"
 msgctxt "view:product.template:"
 msgid "Packages"
 msgstr "Empaquetaments"
-
-msgctxt "field:product.product,packages:"
-msgid "Packages"
-msgstr "Empaquetados"
