@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.package,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:product.package,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:product.package,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product.package,is_default:"
 msgid "Default"
 msgstr "Por defecto"
@@ -30,31 +18,23 @@ msgctxt "field:product.package,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "field:product.package,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
+msgctxt "field:product.package,template:"
+msgid "Template"
+msgstr "Plantilla"
 
-msgctxt "field:product.package,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
+msgctxt "field:product.package,unit:"
+msgid "Unit"
+msgstr "Unidad"
 
-msgctxt "field:product.package,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos unidad"
-
-msgctxt "field:product.package,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:product.package,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:product.template,packages:"
+msgctxt "field:product.product,packages:"
 msgid "Packages"
 msgstr "Empaquetados"
 
-msgctxt "field:product.product,packages:"
+msgctxt "field:product.template,default_package:"
+msgid "Default Package"
+msgstr "Paquete por defecto"
+
+msgctxt "field:product.template,packages:"
 msgid "Packages"
 msgstr "Empaquetados"
 
@@ -67,7 +47,8 @@ msgid "Is default must be unique by product."
 msgstr "Por defecto debe ser único por producto."
 
 msgctxt "model:ir.message,text:msg_product_package_qty"
-msgid "You cannot change the quantity of a package which is already associated."
+msgid ""
+"You cannot change the quantity of a package which is already associated."
 msgstr "No puede cambiar la cantidad que ya está en uso."
 
 msgctxt "model:ir.message,text:msg_quantity_greater_than_zero"
