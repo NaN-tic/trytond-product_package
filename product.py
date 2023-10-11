@@ -252,7 +252,7 @@ class Product(metaclass=PoolMeta):
             template2new = {}
             product2new = {}
             to_copy = []
-            for product, new_product in zip(product, new_products):
+            for product, new_product in zip(products, new_products):
                 if product.packages:
                     to_copy.extend(product.packages)
                     template2new[product.template.id] = new_product.template.id
