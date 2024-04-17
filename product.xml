@@ -39,14 +39,14 @@
         </record>
 
         <record model="ir.model.access" id="access_product_package">
-            <field name="model" search="[('model', '=', 'product.package')]"/>
+            <field name="model">product.package</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_product_package_admin">
-            <field name="model" search="[('model', '=', 'product.package')]"/>
+            <field name="model">product.package</field>
             <field name="group" ref="product.group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
