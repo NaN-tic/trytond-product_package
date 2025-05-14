@@ -166,7 +166,7 @@ class Template(metaclass=PoolMeta):
 
     packages = fields.One2Many('product.package', 'template', "Packages",
         states={
-            'readonly': ~Eval('active', True) | ~Bool(Eval('default_uom')),
+            'readonly': ~Bool(Eval('default_uom')),
             }, depends=['default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
@@ -220,7 +220,7 @@ class Product(metaclass=PoolMeta):
 
     packages = fields.One2Many('product.package', 'product', "Packages",
         states={
-            'readonly': ~Eval('active', True) | ~Bool(Eval('default_uom')),
+            'readonly': ~Bool(Eval('default_uom')),
             }, depends=['default_uom'], context={
             'default_uom': Eval('default_uom', 0),
             },)
