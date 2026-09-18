@@ -74,7 +74,7 @@ class Package(sequence_ordered(), ModelSQL, ModelView):
     template = fields.Many2One('product.template', "Template",
         ondelete='CASCADE')
     product = fields.Many2One('product.product', "Product", ondelete='CASCADE')
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name')
     unit = fields.Function(fields.Many2One('product.uom', "Unit"),
         'on_change_with_unit')
     quantity = fields.Float('Quantity', required=True,
@@ -112,10 +112,25 @@ class Package(sequence_ordered(), ModelSQL, ModelView):
     def default_is_default():
         return True
 
-    @fields.depends('product', '_parent_product.default_uom', )
+    @fields.depends('name', 'quantity', 'unit')
+    def get_rec_name(self, name=None):
+        if self.name:
+            return self.name
+        quantity = format(self.quantity, 'f').rstrip('0').rstrip('.')
+        unit = ' %s' % self.unit.symbol if self.unit else ''
+        return gettext(
+            'product_package.msg_package_of',
+            quantity=quantity, unit=unit)
+
+    @fields.depends(
+        'product', 'template',
+        '_parent_product.default_uom',
+        '_parent_template.default_uom')
     def on_change_with_unit(self, name=None):
         if self.product and self.product.default_uom:
             return self.product.default_uom.id
+        if self.template and self.template.default_uom:
+            return self.template.default_uom.id
 
     @classmethod
     def validate(cls, packages):
