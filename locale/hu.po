@@ -1,0 +1,118 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:product.package,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.package,create_uid:"
+msgid "Create User"
+msgstr "Létrehozó felhasználó"
+
+msgctxt "field:product.package,id:"
+msgid "ID"
+msgstr "Azonosító"
+
+msgctxt "field:product.package,is_default:"
+msgid "Default"
+msgstr "Alapértelmezett"
+
+msgctxt "field:product.package,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.package,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:product.package,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+msgctxt "field:product.package,rec_name:"
+msgid "Record Name"
+msgstr "Rekord neve"
+
+msgctxt "field:product.package,sequence:"
+msgid "Sequence"
+msgstr "Sorszám"
+
+msgctxt "field:product.package,template:"
+msgid "Template"
+msgstr "Sablon"
+
+msgctxt "field:product.package,unit:"
+msgid "Unit"
+msgstr "Mértékegység"
+
+msgctxt "field:product.package,unit_digits:"
+msgid "Unit Digits"
+msgstr "Egység tizedesjegyei"
+
+msgctxt "field:product.package,write_date:"
+msgid "Write Date"
+msgstr "Módosítás dátuma"
+
+msgctxt "field:product.package,write_uid:"
+msgid "Write User"
+msgstr "Módosító felhasználó"
+
+msgctxt "field:product.product,packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
+msgctxt "field:product.template,default_package:"
+msgid "Default Package"
+msgstr "Alapértelmezett csomagolás"
+
+msgctxt "field:product.template,packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
+msgctxt "model:ir.action,name:act_product_package"
+msgid "Product Packages"
+msgstr "Termékcsomagolások"
+
+msgctxt "model:ir.message,text:msg_is_default_unique"
+msgid "Is default must be unique by product."
+msgstr "Termékenként csak egy alapértelmezett csomagolás lehet."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_package_of"
+msgid "Package of %(quantity)s%(unit)s"
+msgstr "%(quantity)s%(unit)s kiszerelés"
+
+msgctxt "model:ir.message,text:msg_product_package_qty"
+msgid ""
+"You cannot change the quantity of a package which is already associated."
+msgstr "Már hozzárendelt csomagolás mennyisége nem módosítható."
+
+msgctxt "model:ir.message,text:msg_quantity_greater_than_zero"
+msgid "Quantity per package must be greater than zero."
+msgstr "A csomagonkénti mennyiségnek nullánál nagyobbnak kell lennie."
+
+msgctxt "model:product.package,name:"
+msgid "Product Package"
+msgstr "Termékcsomagolás"
+
+msgctxt "view:product.package:"
+msgid "Package"
+msgstr "Csomagolás"
+
+msgctxt "view:product.package:"
+msgid "Packages"
+msgstr "Csomagok"
+
+msgctxt "view:product.template:"
+msgid "Packages"
+msgstr "Csomagok"
+
+msgctxt "model:product.package,string:"
+msgid "Product Package"
+msgstr "Termékcsomagolás"
